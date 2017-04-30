@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Entities.Consumption>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped table-hover table-responsive bootstrap-table">
+	<thead class="stupid-table-sortable-header">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.MeterReadings)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.MeasuredAt)
+		</th>
+		<th></th>
+	</tr>
+	</thead>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.MeterReadings)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.MeasuredAt)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+				@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+			</td>
+		</tr>
+	}
+
+</table>
+
+
+@section scripts
+{
+	@Scripts.Render("~/bundles/stupidtable")
+	<script>
+		$(function () {
+			$('table').stupidtable();
+		});
+	</script>
+}

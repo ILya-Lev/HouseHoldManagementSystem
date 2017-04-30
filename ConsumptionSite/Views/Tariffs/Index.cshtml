@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Entities.Tariff>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Tariff List</h2>
+
+<div class="row">
+	<div class="col-md-4">@Html.ActionLink("Create New", "Create")</div>
+	<div class="col-md-4 col-md-push-4">@Html.ActionLink("Ranges", "Index", "ConsumptionRange")</div>
+</div>
+<br/>
+<div class="width-responsible-container">
+<table class="table gridview table-bordered table-hover table-striped">
+	<thead class="gridview-header stupid-table-sortable-header">
+	<tr>
+		<th data-sort="string">
+			@Html.DisplayNameFor(model => model.Since)
+		</th>
+		<th data-sort="string">
+			@Html.DisplayNameFor(model => model.Until)
+		</th>
+		<th data-sort="string">
+			@Html.DisplayNameFor(model => model.Kind)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Ranges)
+		</th>
+		<th></th>
+	</tr>
+	</thead>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Since)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Until)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Kind)
+			</td>
+			<td>
+				@if (item.Ranges != null)
+				{
+					 foreach (var range in item.Ranges)
+					 {
+						 <div>[@range.From; @range.To] @range.PricePerUnit</div>
+					 }
+				}
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+				@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+			</td>
+		</tr>
+	}
+
+</table>
+</div>

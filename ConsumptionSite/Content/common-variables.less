@@ -1,0 +1,198 @@
+﻿@import "common-fonts.less";
+@import "bootstrap/variables.less";
+
+//== Colors
+@gray:                   #666666; 
+@dark-gray:              #393939;
+@gray-light:             #CCCCCC;
+@gray-lighter:           #d1d1d0;
+@gray-25:                #252525;
+@gray-38:                #383838;
+@gray-40:                #404041;
+
+@main-bg:               #DDDDDD;
+@blue:                  #378eae;
+@white:                 #fff;
+@main-orange:           #F58023;
+@dark-orange:           #b97540;
+@light-orange:          #f8a05b;
+@light-blue:            #90A5C2;
+//TODO: refactor less styles naming 
+@lime:                  @main-orange;
+@turquoise:             @blue;
+
+//  Global textual link color.
+@link-color:            @lime;
+//  Link hover color set via `darken()` function.
+@link-hover-color:      darken(@lime, 15%);
+
+//== Tables
+@table-bg-accent:       #f0f0f0; 
+
+//  Validation colors
+@validation-box-color:          #fb555a;
+@validation-text-color:         @white;
+@field-invalid-color:           #b94a48;
+
+//  Notification colors
+@notification-box-bg:           @lime;
+
+// Tip-box colors
+@tip-box-bg:                    #fcf8e5;
+@tip-box-font-color:            #8c6c42;
+@tip-box-border-color:          #F4D6A6;
+
+// Gridview
+@gridview-header-bg:                @dark-gray;
+@gridview-header-border-color:      @gray-lighter;
+@gridview-color:                    @gray;
+
+// Other colors
+@control-label-color:               @dark-gray;
+@modal-close-color:                 @gray-40;
+@modal-header-border-color:         @gray-40;
+@disbaled-color:                    @gray-light;
+@border-color-base:                 @dark-gray;
+@dark-stripe-bg:                    @dark-gray;
+@dark-stripe-color:                 @white;
+
+//== Scaffolding
+@form-content-indent: 150px;
+@form-content-padding: 15px;
+
+@form-min-content-width: 615px;
+@form-mid-content-width: 780px;
+@form-max-content-width: 900px;
+
+@white-box-padding: 30px;
+
+// ## Settings for some of the most global styles.
+
+//  Background color for `<body>`.
+@body-bg:               @main-bg;
+//  Global text color on `<body>`.
+@text-color:            @gray-40;
+@darker-text-color:     @gray-25;
+
+@hr-color:              @gray-40;
+@hr-bg:   @dark-gray;
+
+//  Global textual link color.
+@link-color:                    @lime;
+@unathorized-link-color:        darken(@lime, 15%);
+//  Link hover color set via `darken()` function.
+@link-hover-color:              @unathorized-link-color;
+@unathorized-link-hover-color:  darken(@lime, 25%);
+@bright-link-color: #66FF66;
+@bright-link-hover-color: #00CC00;
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-family-lato-black:            "LatoBlack";
+@font-family-lato-bold:             "LatoBold";
+@font-family-lato-light:            "LatoLight";
+@font-family-lato-regular:          "LatoRegular";
+@font-family-sans-serif:            "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:                 Georgia, "Times New Roman", Times, serif;
+@font-family-base:                  @font-family-lato-regular;
+
+@font-size-base:                    12pt;
+@font-size-pagination:              12pt;
+@font-size-white-box-base:          12pt;
+@font-size-link:                    @font-size-white-box-base;
+@font-size-table-header:            11pt;
+@font-size-label:                   11pt;
+@font-size-h2:                      19pt;
+@h2-color:                          @dark-gray;
+
+//  Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.2; // 20/14
+
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+
+@padding-base-vertical:     10px;
+@padding-base-horizontal:   10px;
+
+@border-radius-base:        0;
+@control-border-radius:     @border-radius-base;
+
+@footer-height:             60px;
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+@btn-font-weight:                normal;
+
+@btn-default-color:              @white;
+@btn-default-bg:                 transparent;
+@btn-default-border:             transparent;
+
+@btn-primary-color:              @white;
+@btn-primary-bg:                 @lime;
+@btn-primary-border:             transparent;
+@btn-primary-bg-hover: @dark-gray;
+
+// Define sm screen size
+@screen-sm:                     769px;
+
+
+// Enlarge lg screen size
+@screen-lg:                     1300px;
+// Smaller gutter so content takes more space
+// 6px because of tiles border-width
+@container-gutter-width:        6px;
+@gutter-gridview-vertical:      30px;
+@gutter-gridview-horizontal:    30px;
+
+// Container sizes
+// Define the maximum width of `.container` for different screen sizes.
+// For `@screen-sm-min` and up.
+@container-sm:                 94%;
+
+// For `@screen-md-min` and up.
+@container-md:                 882px;
+
+// For `@screen-lg-min` and up.
+@container-lg:                 1178px;
+
+
+// Navbar
+// Basics of a navbar
+@navbar-margin-bottom:             0;
+@nav-link-hover-bg:         @gray-lighter;
+
+//== Forms
+@input-color:               @gray-40;
+@input-border-color:        @gray-40;
+
+//  Placeholder text color
+@input-color-placeholder:        @gray;
+
+//  Dropdown variables
+@dropdown-font-size:                12pt;
+@dropdown-arrow-color:              @gray-40;
+@dropdown-btn-bg:                   @white;
+@dropdown-btn-bg-hover:             @white;
+@dropdown-btn-color:                @gray-40;
+@dropdown-btn-color-hover:          @gray-40;
+@dropdown-menu-bg:                  @white;
+@dropdown-menu-item-bg-hover:       @white;
+@dropdown-menu-item-color:          @gray-40;
+@dropdown-menu-item-color-hover:    lighten(@gray-40, 30%);
+@dropdown-btn-border-color:         @gray-40;
+@dropdown-link-color:               @gray-25;
+@dropdown-filter-option-color:      @dark-gray;
+
+// Tree View variable
+@tree-view-header:            @table-bg-accent;
+
+// TIN Link and Popup variables
+@tin-popup-link:              @navbar-default-toggle-icon-bar-bg;
+@question-mark-light-color:   #60A6F1;
+@question-mark-dark-color:    #003a6f;

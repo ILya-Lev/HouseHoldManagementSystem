@@ -1,0 +1,137 @@
+﻿@model ConsumptionSite.Models.TimePeriodViewModel
+
+@{
+	ViewBag.Title = "Date Period";
+	Func<DateTime?, string> printDate = d => (d ?? DateTime.Today).ToString("yyyy MMMM dd");
+	Func<double, string> printDouble = d => d.ToString("N2");
+	Func<decimal, string> printDecimal = d => d.ToString("N2");
+}
+
+<hr/>
+<div class="container">
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-horizontal body-content">
+			<div class="form-group">
+				@Html.LabelFor(model => model.StartingDate, htmlAttributes: new {@class = "control-label col-md-4"})
+				<div class="col-md-4 col-md-push-4">
+					@Html.EditorFor(model => model.StartingDate, new {htmlAttributes = new {@class = "form-control", Title = "A date to include measurements from"}})
+					@Html.ValidationMessageFor(model => model.StartingDate, "", new {@class = "text-danger"})
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.EndingDate, htmlAttributes: new {@class = "control-label col-md-4"})
+				<div class="col-md-4 col-md-push-4">
+					@Html.EditorFor(model => model.EndingDate, new {htmlAttributes = new {@class = "form-control", Title = "A date to include measurements from"}})
+					@Html.ValidationMessageFor(model => model.EndingDate, "", new {@class = "text-danger"})
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Evalueate!" class="btn btn-default btn-primary" />
+				</div>
+			</div>
+		</div>
+	}
+</div>
+	
+@if (ViewBag.HasDetails)
+{
+	<div class="row">From @Model.StartingDate to @Model.EndingDate was consumed @Model.ConsumptionDetailses.Sum(cd => cd.Consumed) of total cost @Model.ConsumptionDetailses.Sum(cd => cd.Price)</div>
+
+	<div class="row">
+		<div class="col-md-5">
+			<label class="title">Consumption Details</label>
+			<table class="table-striped table-responsive table-hover table-bordered">
+				<thead class="gridview-header stupid-table-sortable-header">
+				<tr>
+					<td>Consumed</td>
+					<td>Price</td>
+					<td>From</td>
+					<td>To</td>
+					<td class="last text-center">Days Elapsed</td>
+				</tr>
+				</thead>
+				<tbody>
+				@foreach (var item in Model.ConsumptionDetailses)
+				{
+					<tr>
+						<td class="text-center">@printDouble(item.Consumed)</td>
+						<td class="text-center">@printDecimal(item.Price)</td>
+						<td>@printDate(item.From)</td>
+						<td>@printDate(item.To)</td>
+						<td class="text-center">@item.DaysElapsed</td>
+					</tr>
+				}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-5">
+			<label class="title">Tariffs</label>
+			<table class="table-striped table-responsive table-hover table-bordered">
+				<thead class="gridview-header stupid-table-sortable-header">
+				<tr>
+					<td>Since</td>
+					<td>Until</td>
+					<td>Ranges</td>
+					<td>Prices</td>
+				</tr>
+				</thead>
+				<tbody>
+				@foreach (var item in Model.Tariffs)
+				{
+					<tr>
+						<td>@printDate(item.Since)</td>
+						<td>@printDate(item.Until)</td>
+						<td class="panel-group">
+							@foreach (var range in item.Ranges)
+							{
+								<span>@range.From - @range.To</span>
+							}
+						</td>
+						<td>
+							@foreach (var range in item.Ranges)
+							{
+								<span>@range.PricePerUnit</span>
+							}
+						</td>
+					</tr>
+				}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-2">
+			<label class="title">Consumptions</label>
+			<table class="table-striped table-responsive table-hover table-bordered">
+				<thead class="gridview-header stupid-table-sortable-header">
+				<tr>
+					<td>Meter Readings</td>
+					<td>Measured At</td>
+				</tr>
+				</thead>
+				<tbody>
+				@foreach (var item in Model.Consumptions)
+				{
+					<tr>
+						<td class="text-center">@item.MeterReadings</td>
+						<td>@printDate(item.MeasuredAt)</td>
+					</tr>
+				}
+				</tbody>
+			</table>
+		</div>
+	</div>
+}
+
+
+@section scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/js/stupidtable")
+	<script>
+		$(function () {
+			$('table').stupidtable();
+		});
+	</script>
+}

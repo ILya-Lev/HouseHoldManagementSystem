@@ -1,0 +1,3 @@
+tariff - consumption range - each time link should be created a new entry in tariff is indeed created
+in calculator - tariffs are gained without ranges? why is it so...
+also force datetime picker to work as intended - tariff creation view, e.g.
