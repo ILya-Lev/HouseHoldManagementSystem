@@ -5,7 +5,6 @@
 }
 
 <h2>Create</h2>
-<link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
 
 @using (Html.BeginForm())
 {
@@ -19,7 +18,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.Since, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.Since, new { htmlAttributes = new { @class = "date-input", Title = "A date the tariff is applicable since", data_datepicker = true } })
+				<input name="Since" class="datepicker" id="Since" data-role="datepicker" data-format="dd-MM-yyyy"/>
 				@Html.ValidationMessageFor(model => model.Since, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -27,7 +26,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.Until, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.Until, new { htmlAttributes = new { @class = "date-input", Title = "A date the tariff expires", data_datepicker = true } })
+				<input name="Until" class="datepicker" id="Until" data-role="datepicker" data-format="dd-MM-yyyy" />
 				@Html.ValidationMessageFor(model => model.Until, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -43,13 +42,13 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.ConsumptionRanges, htmlAttributes: new { @class = "center-block col-md-2" })
 			<div class="col-md-10">
-				@Html.ListBoxFor(model => model.ConsumptionRanges, Model.ConsumptionRanges.Select(cr => new SelectListItem { Text = cr, Value=cr }))
+				@Html.ListBoxFor(model => model.ConsumptionRanges, Model.ConsumptionRanges.Select(cr => new SelectListItem { Text = cr, Value = cr }))
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Create" class="btn btn-default btn-primary" />
+				<input type="submit" value="Create" class="btn btn-default btn-primary btn-lg" />
 			</div>
 		</div>
 	</div>
@@ -61,10 +60,9 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-
-	<script type="text/javascript">
-		$(function () {
-			$('#datetimepicker1').datetimepicker();
-		});
+	<script src="~/Scripts/Kendo/kendo.all.min.js"></script>
+	<script>
+		kendo.init($("#Since"));
+		kendo.init($("#Until"));
 	</script>
 }

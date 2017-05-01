@@ -2,6 +2,7 @@
 
 @{
 	ViewBag.Title = "Edit";
+	Func<DateTime?, string> printDate = d => (d ?? DateTime.Today).ToString("dd-MMM-yyyy");
 }
 
 <h2>Edit</h2>
@@ -20,7 +21,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.Since, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.Since, new {htmlAttributes = new {@class = "form-control"}})
+				<input name="Since" class="datepicker" id="Since" data-role="datepicker" data-format="dd-MM-yyyy" value="@printDate(Model.Since)" />
 				@Html.ValidationMessageFor(model => model.Since, "", new {@class = "text-danger"})
 			</div>
 		</div>
@@ -28,7 +29,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.Until, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.Until, new { htmlAttributes = new { @class = "form-control" } })
+				<input name="Until" class="datepicker" id="Until" data-role="datepicker" data-format="dd-MM-yyyy" value="@printDate(Model.Until)"/>
 				@Html.ValidationMessageFor(model => model.Until, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -50,7 +51,7 @@
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Save" class="btn btn-default" />
+				<input type="submit" value="Save" class="btn btn-default btn-primary btn-lg" />
 			</div>
 		</div>
 	</div>
@@ -62,4 +63,9 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
+	<script src="~/Scripts/Kendo/kendo.all.min.js"></script>
+	<script>
+		kendo.init($("#Since"));
+		kendo.init($("#Until"));
+	</script>
 }

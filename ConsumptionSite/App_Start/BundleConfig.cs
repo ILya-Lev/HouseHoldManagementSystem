@@ -34,7 +34,9 @@ namespace ConsumptionSite
 					  "~/Content/bootstrap.css",
 					  "~/Content/bootstrap-datetimepicker.css",
 					  "~/Content/site.css",
-					  "~/Content/common-*"));
+					  "~/Content/common-*",
+					  "~/Content/kendo/kendo.common.core.min.css",
+					  "~/Content/kendo/kendo.default.min.css"));
 		}
 	}
 }

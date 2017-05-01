@@ -20,7 +20,7 @@ namespace ConsumptionSite.Models
 			var allRanges = db.ConsumptionRanges.ToList();
 			var targetRanges = allRanges
 				.Select(r => new { Range = r, Description = From(r) })
-				.Where(item => ConsumptionRanges.Contains(item.Description))
+				.Where(item => ConsumptionRanges?.Contains(item.Description) ?? false)
 				.DistinctBy(item => item.Range.Id)
 				.Select(item => item.Range)
 				.ToList();

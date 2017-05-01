@@ -223,6 +223,7 @@
     </Compile>
     <Compile Include="DataContexts\Migrations\Entities\Configuration.cs" />
     <Compile Include="DataContexts\Migrations\Identities\Configuration.cs" />
+    <Compile Include="Handlers\SampleHandler.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -239,6 +240,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\kendo\kendo.common.core.min.css" />
+    <Content Include="Content\kendo\kendo.default.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -343,6 +346,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Kendo\kendo.all.min.js" />
+    <Content Include="Scripts\Kendo\kendo.datepicker.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
